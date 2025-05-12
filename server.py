@@ -2,6 +2,12 @@ from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from flask_cors import CORS
 import datetime
+import os
+# importing necessary functions from dotenv library
+from dotenv import load_dotenv, dotenv_values 
+# loading variables from .env file
+load_dotenv() 
+
 
 app = Flask(__name__,template_folder="./templates")
 CORS(app)
@@ -332,4 +338,4 @@ def summary_metrics():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=os.getenv("PORT"))
